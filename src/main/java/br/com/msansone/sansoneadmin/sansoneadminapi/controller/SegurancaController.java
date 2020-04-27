@@ -1,5 +1,7 @@
 package br.com.msansone.sansoneadmin.sansoneadminapi.controller;
 
+import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,26 +21,32 @@ import br.com.msansone.sansoneadmin.sansoneadminapi.service.UsuarioService;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class SegurancaController {
 	
+	private static Logger LOG = Logger.getLogger("SegurancaController");
+	
 	@Autowired
 	UsuarioService usuarioService;
 	
 	@GetMapping("/usuario/{id}")
 	public Usuario getusuarioById(@PathVariable Long id) {
+		LOG.info("GET - /sansoneadmin/seguranca/usuario/"+id);
 		return usuarioService.getusuarioById(id);
 	}
 	
 	@PostMapping("/login")
 	public Usuario getusuarioByEmailAndSenha(@RequestBody Usuario usuario) {
+		LOG.info("POST - /sansoneadmin/seguranca/login/");
 		return usuarioService.getusuarioByEmailAndSenha(usuario.getEmail(), usuario.getSenha());
 	}
 	
 	@PostMapping("/usuario")
 	public Usuario addUsuario(@RequestBody Usuario usuario) throws UsuarioDuplicateException {
+		LOG.info("POST - /sansoneadmin/seguranca/usuario/");
 		return usuarioService.addUsuario(usuario);
 	}
 	
 	@DeleteMapping("/usuario")
 	public void delUsuario(@RequestBody Usuario usuario) {
+		LOG.info("DELETE - /sansoneadmin/seguranca/login/");
 		usuarioService.delUsuario(usuario);
 	}
 

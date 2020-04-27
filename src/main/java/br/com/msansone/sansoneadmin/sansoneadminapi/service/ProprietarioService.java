@@ -28,4 +28,8 @@ public class ProprietarioService {
 		return proprietario.isPresent()?proprietario.get():null;
 	}
 
+	public void deleteProprietario(Long id) {
+		proprietarioRepository.deleteById(id);		
+	}
+
 }
