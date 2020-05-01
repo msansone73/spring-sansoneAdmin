@@ -18,7 +18,7 @@ import br.com.msansone.sansoneadmin.sansoneadminapi.service.ImovelService;
 
 @RestController
 @RequestMapping("/sansoneadmin")
-@CrossOrigin(origins = "http://164.68.103.142:3000/")
+@CrossOrigin(origins = "http://164.68.103.142:3000")
 public class ImovelController {
 	
 	private static Logger LOG = Logger.getLogger("ImovelController");
