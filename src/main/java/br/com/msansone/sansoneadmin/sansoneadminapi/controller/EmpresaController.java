@@ -17,7 +17,7 @@ import br.com.msansone.sansoneadmin.sansoneadminapi.service.PerfilService;
 @RestController
 @RequestMapping("/sansoneadmin")
 //@CrossOrigin(origins = "http://164.68.103.142:5000")
-@CrossOrigin(origins = "*",allowCredentials = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class EmpresaController {
 	
 	private static Logger LOG = Logger.getLogger("EmpresaController");
