@@ -19,7 +19,7 @@ import br.com.msansone.sansoneadmin.sansoneadminapi.service.ProprietarioService;
 @RestController
 @RequestMapping("/sansoneadmin")
 //@CrossOrigin(origins = "http://164.68.103.142:5000")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*",allowCredentials = "*")
 public class ProprietarioController {
 	
 
