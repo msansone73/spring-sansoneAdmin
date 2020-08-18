@@ -9,8 +9,8 @@ import br.com.msansone.sansoneadmin.sansoneadminapi.model.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 
-	Optional<Usuario> findByEmailAndSenha(String email, String senha);
+	Optional<Usuario> findByLoginAndSenha(String login, String senha);
 
-	List<Usuario> findAllByEmail(String email);
+	List<Usuario> findAllByLogin(String login);
 
 }

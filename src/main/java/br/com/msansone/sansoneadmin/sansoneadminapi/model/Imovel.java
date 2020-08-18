@@ -9,7 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Imovel extends ModelAbstract {
+public class Imovel extends AbstractModel {
 	
 	@Column(nullable = false, length = 200)
 	private String Nome;

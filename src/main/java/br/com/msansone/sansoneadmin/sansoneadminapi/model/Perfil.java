@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
-public class Perfil extends ModelAbstract{
+public class Perfil extends AbstractModel{
 
 	@Column(length = 200, nullable = false)
 	private String nome;

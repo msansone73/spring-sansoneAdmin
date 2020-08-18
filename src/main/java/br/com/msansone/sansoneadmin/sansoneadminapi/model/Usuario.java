@@ -8,13 +8,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Usuario extends ModelAbstract{
+public class Usuario extends AbstractContatoModel{
 
 	@Column(length = 200, nullable = false)
 	private String nome;
 	
 	@Column(length = 200, nullable = false)
-	private String email;
+	private String login;
 	
 	@Column(length = 15, nullable = false)
 	private String senha;
@@ -35,12 +35,12 @@ public class Usuario extends ModelAbstract{
 		this.nome = nome;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getLogin() {
+		return login;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setLogin(String email) {
+		this.login = email;
 	}
 
 	public String getSenha() {

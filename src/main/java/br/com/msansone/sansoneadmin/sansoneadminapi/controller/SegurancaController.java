@@ -34,9 +34,9 @@ public class SegurancaController {
 	}
 	
 	@PostMapping("/login")
-	public Usuario getusuarioByEmailAndSenha(@RequestBody Usuario usuario) {
+	public Usuario getusuarioByoginlAndSenha(@RequestBody Usuario usuario) {
 		LOG.info("POST - /sansoneadmin/seguranca/login/");
-		return usuarioService.getusuarioByEmailAndSenha(usuario.getEmail(), usuario.getSenha());
+		return usuarioService.getusuarioByLoginAndSenha(usuario.getLogin(), usuario.getSenha());
 	}
 	
 	@PostMapping("/usuario")

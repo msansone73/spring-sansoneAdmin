@@ -21,13 +21,13 @@ public class UsuarioService {
 		return usuario.isPresent()?usuario.get():null;
 	}
 
-	public Usuario getusuarioByEmailAndSenha(String email, String senha) {
-		Optional<Usuario> usuario = usuarioRepository.findByEmailAndSenha(email,senha);
+	public Usuario getusuarioByLoginAndSenha(String login, String senha) {
+		Optional<Usuario> usuario = usuarioRepository.findByLoginAndSenha(login,senha);
 		return usuario.isPresent()?usuario.get():null;
 	}
 
 	public Usuario addUsuario(Usuario usuario) throws UsuarioDuplicateException {
-		List<Usuario> usuarios = usuarioRepository.findAllByEmail(usuario.getEmail());
+		List<Usuario> usuarios = usuarioRepository.findAllByLogin(usuario.getLogin());
 		if (usuario ==null || usuarios.size()>0) {
 			throw new UsuarioDuplicateException();
 		}

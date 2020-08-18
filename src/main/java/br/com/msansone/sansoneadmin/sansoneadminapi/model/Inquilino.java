@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Inquilino  extends ModelAbstract{
+public class Inquilino  extends AbstractModel{
 	
 	@Column(nullable = false, length = 200)
 	private String Nome;
