@@ -1,5 +1,6 @@
 package br.com.msansone.sansoneadmin.sansoneadminapi.controller;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,12 @@ public class SegurancaController {
 	public Usuario getusuarioById(@PathVariable Long id) {
 		LOG.info("GET - /sansoneadmin/seguranca/usuario/"+id);
 		return usuarioService.getusuarioById(id);
+	}
+	
+	@GetMapping("/usuario")
+	public List<Usuario> getAllUsuario() {
+		LOG.info("GET - /sansoneadmin/seguranca/usuario");
+		return usuarioService.getAllUsuarios();
 	}
 	
 	@PostMapping("/login")

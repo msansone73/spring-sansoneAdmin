@@ -37,7 +37,9 @@ public class UsuarioService {
 	public void delUsuario(Usuario usuario) {
 		usuarioRepository.delete(usuario);
 	}
-	
-	
+
+	public List<Usuario> getAllUsuarios() {
+		return usuarioRepository.findAll();
+	}
 
 }
