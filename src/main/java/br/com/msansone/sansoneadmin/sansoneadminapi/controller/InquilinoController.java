@@ -26,11 +26,13 @@ public class InquilinoController {
 	
 	@GetMapping("/inquilino/{id}")
 	public Inquilino getById(@PathVariable Long id) {
+		LOG.info("/sansoneadmin/inquilino/{id}");
 		return inquilinoService.getById(id);
 	}
 	
 	@PostMapping("/inquilino")
 	public Inquilino saveInquinilo(@RequestBody Inquilino inquilino) {
+		LOG.info("/sansoneadmin/inquilino");
 		return inquilinoService.salvar(inquilino);
 	}
 	

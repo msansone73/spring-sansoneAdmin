@@ -25,7 +25,9 @@ public class ContratoController {
 	
 	@GetMapping("/contrato/imovel/{idImovel}")
 	public List<Contrato> getContratosByImovelId(@PathVariable Long idImovel){
+		LOG.info("/contrato/imovel/{idImovel}");
 		return contratoService.getByImovelId(idImovel);
 	}
 
 }
+

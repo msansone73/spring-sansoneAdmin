@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.msansone.sansoneadmin.sansoneadminapi.model.Empresa;
@@ -21,7 +22,7 @@ import br.com.msansone.sansoneadmin.sansoneadminapi.service.PerfilService;
 @RestController
 @RequestMapping("/sansoneadmin")
 //@CrossOrigin(origins = "http://164.68.103.142:5000")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class EmpresaController {
 	
 	private static Logger LOG = Logger.getLogger("EmpresaController");
