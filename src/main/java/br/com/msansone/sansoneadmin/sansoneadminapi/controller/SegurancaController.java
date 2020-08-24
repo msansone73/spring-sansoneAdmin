@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.msansone.sansoneadmin.sansoneadminapi.exception.UsuarioDuplicateException;
+import br.com.msansone.sansoneadmin.sansoneadminapi.model.Perfil;
 import br.com.msansone.sansoneadmin.sansoneadminapi.model.Usuario;
+import br.com.msansone.sansoneadmin.sansoneadminapi.service.PerfilService;
 import br.com.msansone.sansoneadmin.sansoneadminapi.service.UsuarioService;
 
 @RestController
@@ -28,6 +30,9 @@ public class SegurancaController {
 	@Autowired
 	UsuarioService usuarioService;
 	
+	@Autowired
+	PerfilService perfilService;
+	
 	@GetMapping("/usuario/{id}")
 	public Usuario getusuarioById(@PathVariable Long id) {
 		LOG.info("GET - /sansoneadmin/seguranca/usuario/"+id);
@@ -39,6 +44,13 @@ public class SegurancaController {
 		LOG.info("GET - /sansoneadmin/seguranca/usuario");
 		return usuarioService.getAllUsuarios();
 	}
+	
+	@GetMapping("/perfil")
+	public List<Perfil> getAllPerfil() {
+		LOG.info("GET - /sansoneadmin/seguranca/perfil");
+		return perfilService.getAll();
+	}
+	
 	
 	@PostMapping("/login")
 	public Usuario getusuarioByoginlAndSenha(@RequestBody Usuario usuario) {
