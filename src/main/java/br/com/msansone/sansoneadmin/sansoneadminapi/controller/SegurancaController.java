@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.msansone.sansoneadmin.sansoneadminapi.exception.UsuarioDuplicateException;
 import br.com.msansone.sansoneadmin.sansoneadminapi.model.Perfil;
 import br.com.msansone.sansoneadmin.sansoneadminapi.model.Usuario;
+import br.com.msansone.sansoneadmin.sansoneadminapi.model.rest.ApiError;
 import br.com.msansone.sansoneadmin.sansoneadminapi.service.PerfilService;
 import br.com.msansone.sansoneadmin.sansoneadminapi.service.UsuarioService;
 
@@ -59,10 +62,18 @@ public class SegurancaController {
 	}
 	
 	@PostMapping("/usuario")
-	public Usuario addUsuario(@RequestBody Usuario usuario) throws UsuarioDuplicateException {
+	public ResponseEntity<Object> addUsuario(@RequestBody Usuario usuario) {
 		LOG.info("POST - /sansoneadmin/seguranca/usuario/");
-		return usuarioService.addUsuario(usuario);
+		ResponseEntity<Object> saida = null;
+		try {
+			saida= new ResponseEntity<Object>(usuarioService.addUsuario(usuario), HttpStatus.OK);
+		} catch (UsuarioDuplicateException e) {
+			saida= new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+			e.printStackTrace();
+		}
+		return saida;
 	}
+	
 	
 	@DeleteMapping("/usuario")
 	public void delUsuario(@RequestBody Usuario usuario) {
