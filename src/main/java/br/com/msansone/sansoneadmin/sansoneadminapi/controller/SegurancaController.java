@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,10 +27,16 @@ import br.com.msansone.sansoneadmin.sansoneadminapi.service.UsuarioService;
 @RestController
 @RequestMapping("/sansoneadmin/seguranca")
 //@CrossOrigin(origins = "http://164.68.103.142:5000")
+@PropertySource("classpath:message.properties")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class SegurancaController {
 	
 	private static Logger LOG = Logger.getLogger("SegurancaController");
+	
+	
+	@Value("${login.duplicado}")
+	private String loginDuplicado;
+
 	
 	@Autowired
 	UsuarioService usuarioService;
@@ -68,7 +76,7 @@ public class SegurancaController {
 		try {
 			saida= new ResponseEntity<Object>(usuarioService.addUsuario(usuario), HttpStatus.OK);
 		} catch (UsuarioDuplicateException e) {
-			saida= new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+			saida= new ResponseEntity<Object>( new ApiError(loginDuplicado, "") , HttpStatus.BAD_REQUEST);
 			e.printStackTrace();
 		}
 		return saida;

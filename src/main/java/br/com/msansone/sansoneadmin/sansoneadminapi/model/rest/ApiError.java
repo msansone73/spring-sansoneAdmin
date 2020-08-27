@@ -4,11 +4,12 @@ public class ApiError {
 	private String errorMessage;
 	private String errorStack;
 
-	public ApiError(Exception e) {
-		errorMessage=e.getCause().getMessage();
-		errorStack= e.getCause().getStackTrace().toString();
+	public ApiError(String errorMessage, String errorStack) {
+		super();
+		this.errorMessage = errorMessage;
+		this.errorStack = errorStack;
 	}
-	
+
 	public ApiError() {
 	}
 
