@@ -76,7 +76,7 @@ public class SegurancaController {
 		try {
 			saida= new ResponseEntity<Object>(usuarioService.addUsuario(usuario), HttpStatus.OK);
 		} catch (UsuarioDuplicateException e) {
-			saida= new ResponseEntity<Object>( new ApiError(loginDuplicado, "") , HttpStatus.BAD_REQUEST);
+			saida= new ResponseEntity<Object>( new ApiError(loginDuplicado, "") , HttpStatus.OK);
 			e.printStackTrace();
 		}
 		return saida;
